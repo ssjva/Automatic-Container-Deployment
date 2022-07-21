@@ -1,20 +1,8 @@
-# Simple DevOps Project - 4
-
-
 
 In this project, we will be see how to *use Git, Jenkins, Ansible, DockerHub, Docker to DEPLOY on a docker container.,*
 
-#### PreRequisites
-1. Jenkins - Get help [here](https://www.youtube.com/watch?v=M32O4Yv0ANc)
-1. Ansible - Get help [here](https://www.youtube.com/watch?v=79xFyOc_eEY)
-1. Setup ansible client and install docker. [here](https://www.youtube.com/watch?v=nMLQgXf8tZ0)
-1. Docker Hub account 
 
-#### Previous DevOps projects:
 
-1. Simple DevOps project-1 [here](https://www.youtube.com/watch?v=Z9G5stlXoyg)
-1. Simple DevOps project-2 [here](https://www.youtube.com/watch?v=nE4b9mW2ym0)
-1. Simple DevOps project-3 [here](https://www.youtube.com/watch?v=nMLQgXf8tZ0)
 
 In *part-01* we create Docker image on ansible server through Jenkins job and pushed it onto DockerHub. 
 
@@ -42,9 +30,9 @@ In *part-01* we create Docker image on ansible server through Jenkins job and pu
        - Exec Command: 
 	      - `cd /opt/docker`
           - docker build -t valaxy_demo .
-	      - docker tag anksuh_demo valaxy/valaxy_demo
+	      - docker tag ankush_demo ankush120/valaxy_demo
           - `docker push ankush/ankush_demo
-          - docker rmi ankush_demo ankush/ankush_demo
+          - docker rmi ankush_demo ankush120/ankush_demo
               
 1. Login to Docker host and check images and containers. (no images and containers)
 
@@ -74,12 +62,12 @@ In *Part-02* we create *create_docker_container.yml* playbook. this get intiated
         - name: remove stopped container
           shell: docker rm -f ankush_demo	  
         - name: remove docker images
-          shell: docker image rm -f ankush/ankush_demo
+          shell: docker image rm -f ankush120/ankush_demo
           
         - name: create docker image
-          shell: docker run -d --name ankush -p 8090:8080 anksuh/ankush_demo
+          shell: docker run -d --name ankush -p 8090:8080 ankush120/ankush_demo
 
-1. Add this script to Jenkins job.
+  Add this script to Jenkins job.
    - Chose *"configure"* to modify your jenkins job. 
      - *Under post build actions*
         - Send files or execute commands over SSH
